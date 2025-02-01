@@ -9,7 +9,6 @@
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
         }
-
         .container {
             max-width: 400px;
             margin: 0 auto;
@@ -18,21 +17,17 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
-
         h1 {
             text-align: center;
         }
-
         .form-group {
             margin-bottom: 15px;
             margin-right: 15px;
         }
-
         label {
             display: block;
             font-weight: bold;
         }
-
         input[type="text"],
         input[type="email"],
         input[type="password"],
@@ -44,7 +39,6 @@
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-
         select {
             width: 100%;
             padding: 10px;
@@ -53,7 +47,6 @@
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-
         button[type="submit"] {
             background-color: #007BFF;
             color: #fff;
@@ -61,8 +54,8 @@
             padding: 10px 20px;
             border-radius: 3px;
             cursor: pointer;
+            width: 100%;
         }
-
         button[type="submit"]:hover {
             background-color: #0056b3;
         }
@@ -74,35 +67,49 @@
         <form action="#" method="post" id="registration-form">
             <div class="form-group">
                 <label for="last_name">Last Name:</label>
-                <input type="text" id="last_name" required>
+                <input type="text" id="last_name" name="last_name" required>
             </div>
             <div class="form-group">
                 <label for="first_name">First Name:</label>
-                <input type="text" id="first_name" required>
+                <input type="text" id="first_name" name="first_name" required>
             </div>
             <div class="form-group">
                 <label for="middle_name">Middle Name:</label>
-                <input type="text" id="middle_name">
+                <input type="text" id="middle_name" name="middle_name">
             </div>
             <div class="form-group">
                 <label for="birthdate">Birthdate:</label>
-                <input type="date" id="birthdate" required>
+                <input type="date" id="birthdate" name="birthdate" required>
             </div>
             <div class="form-group">
                 <label for="department">Department:</label>
-                <select id="department" required>
+                <select id="department" name="department" required>
                     <option value="hr">HR</option>
                     <option value="finance">Finance</option>
                     <option value="it">IT</option>
-                    <option value="sales">Sales</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="office">Office:</label>
-                <input type="text" id="office" required>
+                <input type="text" id="office" name="office" required>
             </div>
             <button type="submit">Submit</button>
         </form>
     </div>
+    <script>
+        // for event handlers
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from actually submitting
+            
+            // form data validation to siya
+            var form = event.target; 
+            var formData = new FormData(form);
+            
+            // form data validation to siya for console purposes
+            for (var pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+        });
+    </script>
 </body>
 </html>
